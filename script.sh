@@ -3,11 +3,6 @@
 # This script sets up new macs for devs at Bold
 ############################
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: script.sh <home_directory>"
-    exit 1
-fi
-
 homedir=$1
 
 echo "Hello, I'm starting the install"
