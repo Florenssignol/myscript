@@ -36,33 +36,30 @@ brew install caskroom/cask/brew-cask
 
 echo "Installing VSCODE with extensions"
 brew cask install visual-studio-code
-#sudo snap install --classic code
-xdg-mime default code.desktop text/plain
 cat << EOF >> ~/.bash_profile
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 EOF
-code --extensions-dir <dir>
-code --install-extension (<formulahendry.auto-close-tag>)
-code --install-extension (<formulahendry.auto-rename-tag>)
-code --install-extension (<hookyqr.beautify>)
-code --install-extension (<alefragnani.bookmarks>)
-code --install-extension (<coenraads.bracket-pair-colorizer>)
-code --install-extension (<streetsidesoftware.code-spell-checker>)
-code --install-extension (<aliariff.vscode-erb-beautify>)
-code --install-extension (<waderyan.gitblame>)
-code --install-extension (<eamodio.gitlens>)
-code --install-extension (<ecmel.vscode-html-css>)
-code --install-extension (<ms-vsliveshare.vsliveshare>)
-code --install-extension (<ms-vsliveshare.vsliveshare-audio>)
-code --install-extension (<ms-vsliveshare.vsliveshare-pack>)
-code --install-extension (<gerane.theme-monokai>)
-code --install-extension (<azemoh.one-monokai>)
-code --install-extension (<esbenp.prettier-vscode>)
-code --install-extension (<wallabyjs.quokka-vscode>)
-code --install-extension (<rebornix.ruby>)
-code --install-extension (<misogi.ruby-rubocop>)
-code --install-extension (<wayou.vscode-todo-highlight>)
-code --install-extension (<wingrunr21.vscode-ruby>)
+code --install-extension formulahendry.auto-close-tag
+code --install-extension formulahendry.auto-rename-tag
+code --install-extension hookyqr.beautify
+code --install-extension alefragnani.bookmarks
+code --install-extension coenraads.bracket-pair-colorizer
+code --install-extension streetsidesoftware.code-spell-checker
+code --install-extension aliariff.vscode-erb-beautify
+code --install-extension waderyan.gitblame
+code --install-extension eamodio.gitlens
+code --install-extension ecmel.vscode-html-css
+code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension ms-vsliveshare.vsliveshare-audio
+code --install-extension ms-vsliveshare.vsliveshare-pack
+code --install-extension gerane.theme-monokai
+code --install-extension azemoh.one-monokai
+code --install-extension esbenp.prettier-vscode
+code --install-extension wallabyjs.quokka-vscode
+code --install-extension rebornix.ruby
+code --install-extension misogi.ruby-rubocop
+code --install-extension wayou.vscode-todo-highlight
+code --install-extension wingrunr21.vscode-ruby
 
 echo "Installing Oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -75,9 +72,6 @@ git config --global user.email "YOUR@EMAIL.com"
 echo "Cloning Boldsi project"
 cd ~
 git clone https://github.com/ArnaudRemi/boldsi.git
-
-echo "installing apps with Cask..."
-brew cask install --appdir="/Applications" ${apps[@]}
 
 echo "Installing Iterm"
 brew cask install iterm2
@@ -105,24 +99,24 @@ echo "Installing Redis"
 brew install Redis
 
 echo "Now editing dock"
-dockutil --remove all
-dockutil --add /Applications/finder.app --position 1 --no-restart --allhomes
-dockutil --add /Applications/ical.app --after "finder" --no-restart --allhomes
-dockutil --add /Applications/Google\ Chrome.app --after "ical" --no-restart --allhomes
-dockutil --add /Applications/vscode.app --after "Google Chrome" --no-restart --allhomes
-dockutil --add /Applications/notes.app --after "vscode" --no-restart --allhomes
-dockutil --add /Applications/iterm2.app --after "notes" --no-restart --allhomes
-dockutil --add /Applications/slack.app --after "iterm2" --no-restart --allhomes
-dockutil --add /Applications/microsoft_outlook.app --after "slack" --no-restart --allhomes
-dockutil --add /Applications/1password.app --after "Microsoft Outlook" --no-restart --allhomes
-dockutil --add /Applications/spotify.app --after "1password" --no-restart --allhomes
-dockutil --add /Applications/System Preferences.app --after "Spotify" --no-restart --allhomes
-dockutil --add /Applications/imessage.app --after "System Preferences" --no-restart --allhomes
-dockutil --add /Applications/postman.app --after "imessage" --no-restart --allhomes
+# brew install dockutil
+# dockutil --remove all
+# dockutil --add /System/Applications/ical.app 
+# dockutil --add /System/Applications/Google\ Chrome.app 
+# dockutil --add 'Visual Studio Code' 
+# dockutil --add /System/Applications/notes.app 
+# dockutil --add /System/Applications/iterm2.app 
+# dockutil --add /System/Applications/slack.app 
+# dockutil --add /System/Applications/microsoft_outlook.app 
+# dockutil --add /System/Applications/1password.app 
+# dockutil --add /System/Applications/spotify.app 
+# # dockutil --add 'Preference Systeme' 
+# dockutil --add /System/Applications/imessage.app 
+# dockutil --add /System/Applications/postman.app
 
-dockutil --add '/Applications' --view grid --display folder --sort name  --section others --position 1 --allhomes
-dockutil --add '~/Downloads' --view list --display folder --sort dateadded --section others --position 2 --allhomes
-dockutil --add '/trash' --view list --display folder --sort dateadded --section others --position end --allhomes
+# dockutil --add '/Applications' --view grid --display folder --sort name  --section others --position 1 --allhomes
+# dockutil --add '~/Downloads' --view list --display folder --sort dateadded --section others --position 2 --allhomes
+# dockutil --add '/trash' --view list --display folder --sort dateadded --section others --position end --allhomes
 
 echo "Setting up aliases"
 alias gs="git status"
@@ -135,7 +129,7 @@ echo "Setting up computer commands"
 #"Disable annoying backswipe in Chrome"
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
 
-#"Saving to disk (not to iCloud) by default"
+#"Saving to disk not to iCloud by default"
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 #"Check for software updates daily, not just once per week"
@@ -149,9 +143,6 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 defaults write -g com.apple.trackpad.scaling 2
 defaults write -g com.apple.mouse.scaling 2.5
 
-#"Setting the icon size of Dock items to 36 pixels for optimal size/screen-realestate"
-defaults write com.apple.dock tilesize -int 36
-
 #"Disabling the warning when changing a file extension"
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
@@ -159,15 +150,9 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write com.apple.dock "expose-group-by-app" -bool true
 
-#"Setting Dock to auto-hide and removing the auto-hiding delay"
-defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide-time-modifier -float 0
-
 eval "$(rbenv init -)"
 export EDITOR="code --wait"
 export GIT_EDITOR="code --wait"
-source ~/.fzf.zsh
 
 killall Finder
 
